@@ -1,0 +1,1 @@
+The following laboratory focuses on the development of a web page that allows viewing the list of characters provided by Valorant API. Now with search bar :D
