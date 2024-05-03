@@ -17,9 +17,12 @@ export const personajePorId = async (id) => {
 }
 
 export class PersonajeCard {
+  #nodoBotonEliminar;
+  #nodobotonInfo;
   constructor(personaje) {
     this.personaje = personaje;
-    this.contenedor = null;
+    this.contenedor = null; 
+
   }
 
   crearCard() {
@@ -53,20 +56,25 @@ export class PersonajeCard {
     const button = document.createElement("button");
     button.classList.add("btn");
     button.textContent = "Ver información detallada";
+    this.#nodobotonInfo = button;
     btnDiv.appendChild(button);
-
-    button.addEventListener("click", () => {
-      window.location.href = `./personajes.html?id=${this.personaje.uuid}`;
-    });
 
     const trash = document.createElement("i");
     trash.classList.add("fas", "fa-trash", "fa-3x");
+    this.#nodoBotonEliminar = trash;
     btnDiv.appendChild(trash);
 
-    trash.addEventListener("click", async () => {
-      this.contenedor.remove();
-    });
+
 
     return this.contenedor;
   }
+
+  addEventListeners() {
+    this.#nodoBotonEliminar.addEventListener("click", async () => {
+      this.contenedor.remove();
+    });
+    this.#nodobotonInfo.addEventListener("click", async() => {;
+    window.location.href = `./personajes.html?id=${this.personaje.uuid}`;
+  });
+}
 }

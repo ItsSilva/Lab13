@@ -19,6 +19,7 @@ const render = async () => {
       ) {
         const personajeCard = new PersonajeCard(personaje);
         personajes.appendChild(personajeCard.crearCard());
+        personajeCard.addEventListeners();
       }
     }
   });
@@ -26,6 +27,7 @@ const render = async () => {
   for (const personaje of response) {
     const personajeCard = new PersonajeCard(personaje);
     personajes.appendChild(personajeCard.crearCard());
+    personajeCard.addEventListeners();
   }
 };
 
